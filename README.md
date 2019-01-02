@@ -8,6 +8,7 @@ To run these programs you will need to have a minimum of Java 8 installed on you
 You can run each program with or without command line arguments:
 
 C:\dev\JAppStream>java -jar out\artifacts\JAppStreamClient\JAppStreamClient.jar [HOST] [PORT]
+
 C:\dev\JAppStream>java -jar out\artifacts\JAppStreamServer\JAppStreamServer.jar [APP_QUERY] [HOST] [PORT]
 
 HOST = Hostname/IP of the remote host as client or local computer as server
