@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 
 public class JAppStreamServerCore implements Runnable {
@@ -53,6 +54,9 @@ public class JAppStreamServerCore implements Runnable {
                 outputStream.writeObject(screen);
                 outputStream.flush();
                 socket.close();
+            } catch (ConnectException e) {
+                LOGGER.warn("Could Not Connect To Client... Retrying In 3 Seconds...");
+                Thread.sleep(3000);
             } catch (IOException e) {
                 LOGGER.error("Failed To Update Client Image");
                 e.printStackTrace();
