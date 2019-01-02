@@ -27,10 +27,6 @@ public class BasicProcess {
         return process;
     }
 
-    public void forceStartProcess(boolean showInLog) {
-        this.process.start();
-    }
-
     public void startProcess() {
         this.process.start();
     }

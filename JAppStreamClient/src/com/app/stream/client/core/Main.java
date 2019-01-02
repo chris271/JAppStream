@@ -27,13 +27,17 @@ public class Main {
 
                 //Removes the JFrame on clicking close.
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                final String host = JOptionPane.showInputDialog("Please enter the hostname or IP address to connect to." +
-                        "\n(EX: 'localhost', '127.0.0.1', etc.)");
-                final int port;
+
                 try {
-                    port = Integer.parseInt(JOptionPane.showInputDialog("Please enter the port number to connect to." +
-                            "\n(EX: '1', '1500', '14151')"));
-                    clientUi = new JAppStreamClientUI(host, port);
+                    if (args.length != 2) {
+                        clientUi = new JAppStreamClientUI(
+                                JOptionPane.showInputDialog("Please enter the hostname or IP address to connect to." +
+                                "\n(EX: 'localhost', '127.0.0.1', etc.)"),
+                                Integer.parseInt(JOptionPane.showInputDialog("Please enter the port number to connect to." +
+                                "\n(EX: '1', '1500', '14151')")));
+                    } else {
+                        clientUi = new JAppStreamClientUI(args[0], Integer.parseInt(args[1]));
+                    }
                 } catch (Exception e) {
                     LOGGER.error("Problem Loading Client Program. Try Changing The Host Or Port.");
                     e.printStackTrace();
@@ -53,7 +57,7 @@ public class Main {
                     e.printStackTrace();
                 }
             }
-            new BasicProcess(clientCore).forceStartProcess(false);
+            new BasicProcess(clientCore).startProcess();
             while (frame.isShowing()) {
                 //Wait until the GUI window closes.
                 try {

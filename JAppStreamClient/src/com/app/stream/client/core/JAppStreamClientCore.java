@@ -1,6 +1,7 @@
 package com.app.stream.client.core;
 
 import com.app.stream.client.ui.JAppStreamClientUI;
+import com.app.stream.client.util.BasicProcess;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +29,14 @@ public class JAppStreamClientCore implements Runnable {
     }
 
     private void updateCurrentState() {
+        try {
+            new BasicProcess(() -> {
 
+            });
+        } catch (Exception e) {
+            LOGGER.info("Failed To Update: ");
+            e.printStackTrace();
+        }
     }
 
 }
