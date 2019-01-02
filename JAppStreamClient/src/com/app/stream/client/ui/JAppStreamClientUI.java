@@ -135,4 +135,8 @@ public class JAppStreamClientUI extends JPanel {
     public void setUIRectangle(Rectangle uiRectangle) {
         this.uiRectangle = uiRectangle;
     }
+
+    public CopyOnWriteArrayList<Integer> getKeyCodes() {
+        return keyCodes;
+    }
 }

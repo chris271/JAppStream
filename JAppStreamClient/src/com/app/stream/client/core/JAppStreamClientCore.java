@@ -1,9 +1,10 @@
 package com.app.stream.client.core;
 
 import com.app.stream.client.ui.JAppStreamClientUI;
-import com.app.stream.client.util.BasicProcess;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.awt.event.KeyEvent;
 
 public class JAppStreamClientCore implements Runnable {
 
@@ -30,9 +31,7 @@ public class JAppStreamClientCore implements Runnable {
 
     private void updateCurrentState() {
         try {
-            new BasicProcess(() -> {
-
-            });
+            clientUI.getKeyCodes().forEach(keyCode -> LOGGER.info("Key Pressed: " + KeyEvent.getKeyText(keyCode)));
         } catch (Exception e) {
             LOGGER.info("Failed To Update: ");
             e.printStackTrace();
